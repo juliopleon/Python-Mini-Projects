@@ -15,9 +15,8 @@ def load_key():
     return key
 
 
-master_pwd = input("What is the master password? ")
 # encode turns the string into bytes
-key = load_key() + master_pwd.encode()
+key = load_key()
 fer = Fernet(key)
 
 
@@ -27,7 +26,7 @@ def view():
             data = line.rstrip()
             user, passw = data.split("|")
             print("User:", user, "|" "Password:",
-                  str(fer.decrypt(passw.encode())))
+                  fer.decrypt(passw.encode()).decode())
 
 
 def add():
