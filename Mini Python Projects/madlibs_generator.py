@@ -7,6 +7,7 @@ start_of_word = -1
 target_start = "<"
 target_end = ">"
 
+# locates all the index & words in our story
 for i, char in enumerate(story):
     if char == target_start:
         start_of_word = i
@@ -21,3 +22,9 @@ answers = {}
 for word in words:
     answer = input("Enter a word for " + word + ": ")
     answers[word] = answer
+
+# replaces every instance of one string with another
+for word in words:
+    story = story.replace(word, answers[word])
+
+print(story)
